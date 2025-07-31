@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meta Dashboard - Facebook, Instagram, Messenger, Threads</title>
+    <link rel="stylesheet" href="dashboard.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Header -->
+        <header class="dashboard-header">
+            <div class="header-content">
+                <h1><i class="fab fa-meta"></i> Meta Analytics Dashboard</h1>
+                <div class="header-controls">
+                    <button id="refreshBtn" class="btn btn-primary">
+                        <i class="fas fa-sync-alt"></i> Làm mới
+                    </button>
+                    <button id="settingsBtn" class="btn btn-secondary">
+                        <i class="fas fa-cog"></i> Cài đặt
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Navigation -->
+        <nav class="dashboard-nav">
+            <div class="nav-items">
+                <button class="nav-item active" data-tab="overview">
+                    <i class="fas fa-chart-line"></i> Tổng quan
+                </button>
+                <button class="nav-item" data-tab="facebook">
+                    <i class="fab fa-facebook"></i> Facebook
+                </button>
+                <button class="nav-item" data-tab="instagram">
+                    <i class="fab fa-instagram"></i> Instagram
+                </button>
+                <button class="nav-item" data-tab="messenger">
+                    <i class="fab fa-facebook-messenger"></i> Messenger
+                </button>
+                <button class="nav-item" data-tab="threads">
+                    <i class="fas fa-at"></i> Threads
+                </button>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="dashboard-main">
+            <!-- Overview Tab -->
+            <div id="overview" class="tab-content active">
+                <div class="metrics-grid">
+                    <div class="metric-card facebook">
+                        <div class="metric-header">
+                            <i class="fab fa-facebook"></i>
+                            <h3>Facebook</h3>
+                        </div>
+                        <div class="metric-value" id="fb-fans">--</div>
+                        <div class="metric-label">Người theo dõi</div>
+                        <div class="metric-change" id="fb-change">--</div>
+                    </div>
+                    
+                    <div class="metric-card instagram">
+                        <div class="metric-header">
+                            <i class="fab fa-instagram"></i>
+                            <h3>Instagram</h3>
+                        </div>
+                        <div class="metric-value" id="ig-reach">--</div>
+                        <div class="metric-label">Lượt tiếp cận</div>
+                        <div class="metric-change" id="ig-change">--</div>
+                    </div>
+                    
+                    <div class="metric-card messenger">
+                        <div class="metric-header">
+                            <i class="fab fa-facebook-messenger"></i>
+                            <h3>Messenger</h3>
+                        </div>
+                        <div class="metric-value" id="msg-count">--</div>
+                        <div class="metric-label">Tin nhắn</div>
+                        <div class="metric-change" id="msg-change">--</div>
+                    </div>
+                    
+                    <div class="metric-card threads">
+                        <div class="metric-header">
+                            <i class="fas fa-at"></i>
+                            <h3>Threads</h3>
+                        </div>
+                        <div class="metric-value" id="threads-count">--</div>
+                        <div class="metric-label">Bài viết</div>
+                        <div class="metric-change" id="threads-change">Sắp có</div>
+                    </div>
+                </div>
+
+                <div class="charts-grid">
+                    <div class="chart-container">
+                        <h3>Xu hướng tương tác</h3>
+                        <canvas id="engagementChart"></canvas>
+                    </div>
+                    <div class="chart-container">
+                        <h3>So sánh nền tảng</h3>
+                        <canvas id="platformChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Facebook Tab -->
+            <div id="facebook" class="tab-content">
+                <div class="platform-header">
+                    <h2><i class="fab fa-facebook"></i> Facebook Analytics</h2>
+                </div>
+                
+                <div class="webview-container">
+                    <div class="webview-header">
+                        <h3>Facebook Insights</h3>
+                        <button class="webview-refresh" data-platform="facebook">
+                            <i class="fas fa-sync-alt"></i>
+                        </button>
+                    </div>
+                    <div class="webview-content" id="facebook-webview">
+                        <div class="loading-spinner">
+                            <i class="fas fa-spinner fa-spin"></i>
+                            <p>Đang tải dữ liệu Facebook...</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="posts-container">
+                    <h3>Bài viết gần đây</h3>
+                    <div id="facebook-posts" class="posts-grid">
+                        <!-- Facebook posts will be loaded here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Instagram Tab -->
+            <div id="instagram" class="tab-content">
+                <div class="platform-header">
+                    <h2><i class="fab fa-instagram"></i> Instagram Analytics</h2>
+                </div>
+                
+                <div class="webview-container">
+                    <div class="webview-header">
+                        <h3>Instagram Insights</h3>
+                        <button class="webview-refresh" data-platform="instagram">
+                            <i class="fas fa-sync-alt"></i>
+                        </button>
+                    </div>
+                    <div class="webview-content" id="instagram-webview">
+                        <div class="loading-spinner">
+                            <i class="fas fa-spinner fa-spin"></i>
+                            <p>Đang tải dữ liệu Instagram...</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="posts-container">
+                    <h3>Media gần đây</h3>
+                    <div id="instagram-media" class="media-grid">
+                        <!-- Instagram media will be loaded here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Messenger Tab -->
+            <div id="messenger" class="tab-content">
+                <div class="platform-header">
+                    <h2><i class="fab fa-facebook-messenger"></i> Messenger Analytics</h2>
+                </div>
+                
+                <div class="webview-container">
+                    <div class="webview-header">
+                        <h3>Messenger Insights</h3>
+                        <button class="webview-refresh" data-platform="messenger">
+                            <i class="fas fa-sync-alt"></i>
+                        </button>
+                    </div>
+                    <div class="webview-content" id="messenger-webview">
+                        <div class="loading-spinner">
+                            <i class="fas fa-spinner fa-spin"></i>
+                            <p>Đang tải dữ liệu Messenger...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Threads Tab -->
+            <div id="threads" class="tab-content">
+                <div class="platform-header">
+                    <h2><i class="fas fa-at"></i> Threads Analytics</h2>
+                </div>
+                
+                <div class="webview-container">
+                    <div class="webview-header">
+                        <h3>Threads Insights</h3>
+                        <button class="webview-refresh" data-platform="threads">
+                            <i class="fas fa-sync-alt"></i>
+                        </button>
+                    </div>
+                    <div class="webview-content" id="threads-webview">
+                        <div class="info-message">
+                            <i class="fas fa-info-circle"></i>
+                            <p>Threads API hiện đang trong giai đoạn phát triển. Chức năng sẽ được cập nhật khi API chính thức ra mắt.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Settings Modal -->
+        <div id="settingsModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>Cài đặt Dashboard</h2>
+                    <button class="modal-close">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="setting-group">
+                        <label for="accessToken">Access Token:</label>
+                        <input type="password" id="accessToken" placeholder="Nhập Meta Access Token">
+                    </div>
+                    <div class="setting-group">
+                        <label for="pageId">Facebook Page ID:</label>
+                        <input type="text" id="pageId" placeholder="Nhập Facebook Page ID">
+                    </div>
+                    <div class="setting-group">
+                        <label for="userId">Instagram User ID:</label>
+                        <input type="text" id="userId" placeholder="Nhập Instagram User ID">
+                    </div>
+                    <div class="setting-group">
+                        <label for="refreshInterval">Tự động làm mới (phút):</label>
+                        <select id="refreshInterval">
+                            <option value="0">Tắt</option>
+                            <option value="5">5 phút</option>
+                            <option value="15" selected>15 phút</option>
+                            <option value="30">30 phút</option>
+                            <option value="60">60 phút</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="saveSettings" class="btn btn-primary">Lưu cài đặt</button>
+                    <button id="cancelSettings" class="btn btn-secondary">Hủy</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Loading Overlay -->
+        <div id="loadingOverlay" class="loading-overlay">
+            <div class="loading-content">
+                <i class="fas fa-spinner fa-spin"></i>
+                <p>Đang tải dữ liệu...</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="dashboard.js"></script>
+</body>
+</html>
