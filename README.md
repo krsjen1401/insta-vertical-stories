@@ -4,7 +4,7 @@ A small, self-contained web UI that experiments with an Instagram-like vertical 
 
 ## Quick start
 
-- Prerequisites: Node.js 18+
+- Prerequisites: Node.js 
 - Install dependencies:
   
   ```bash
