@@ -1,5 +1,67 @@
 {
                      "githubPullRequests.ignoredPullRequestBranches": [
                                           "main"
-                     ]
+                     ],
+                     "workbench.editor.pinnedTabsOnSeparateRow": true,
+                     "workbench.editor.preferHistoryBasedLanguageDetection": true,
+                     "workbench.editor.wrapTabs": true,
+                     "workbench.editor.untitled.labelFormat": "name",
+                     "workbench.editor.titleScrollbarSizing": "large",
+                     "workbench.editor.tabSizing": "shrink",
+                     "workbench.editor.splitSizing": "split",
+                     "workbench.editor.sharedViewState": true,
+                     "workbench.editor.scrollToSwitchTabs": true,
+                     "workbench.editor.revealIfOpen": true,
+                     "workbench.editor.pinnedTabSizing": "shrink",
+                     "workbench.editor.navigationScope": "editorGroup",
+                     "workbench.editor.limit.perEditorGroup": false,
+                     "workbench.editor.limit.excludeDirty": false,
+                     "workbench.editor.limit.enabled": false,
+                     "workbench.editor.languageDetectionHints": {
+                                          "notebookEditors": false
+                     },
+                     "workbench.editor.labelFormat": "short",
+                     "workbench.editor.highlightModifiedTabs": true,
+                     "workbench.editor.enablePreviewFromQuickOpen": true,
+                     "workbench.editor.enablePreviewFromCodeNavigation": true,
+                     "workbench.editor.editorActionsLocation": "titleBar",
+                     "workbench.editor.doubleClickTabToToggleEditorGroupSizes": "maximize",
+                     "workbench.editor.defaultBinaryEditor": "imagePreview.previewEditor",
+                     "workbench.editor.closeOnFileDelete": true,
+                     "workbench.editor.centeredLayoutFixedWidth": true,
+                     "workbench.editor.autoLockGroups": {
+                                          "default": true,
+                                          "workbench.editorinputs.searchEditorInput": true,
+                                          "workbench.input.interactive": true,
+                                          "mainThreadWebview-markdown.preview": true,
+                                          "idl.enviOpener": true,
+                                          "vscode.videoPreview": true,
+                                          "gitlens.rebase": true,
+                                          "imagePreview.previewEditor": true,
+                                          "vscode.audioPreview": true,
+                                          "workbench.editors.gettingStartedInput": true,
+                                          "repl": true,
+                                          "notebookOutputEditor": true
+                     },
+                     "editor.formatOnSave": true,
+                     "editor.defaultFormatter": "GitHub.codespaces",
+                     "files.exclude": {
+                                          "**/.hg": false,
+                                          "**/.svn": false
+                     },
+                     "workbench.colorTheme": "Quiet Light",
+                  "editor.tabSize": 6,
+                  "editor.mouseWheelZoom": true,
+                  "editor.formatOnPaste": true,
+                  "editor.aiStats.enabled": true,
+                  "editor.autoClosingDelete": "always",
+                  "editor.autoClosingOvertype": "always",
+                  "editor.autoClosingQuotes": "beforeWhitespace",
+                  "editor.minimap.sectionHeaderLetterSpacing": 3,
+                  "editor.suggest.preview": true,
+                  "editor.suggest.selectionMode": "whenQuickSuggestion",
+                  "editor.suggest.shareSuggestSelections": true,
+                  "editor.suggest.snippetsPreventQuickSuggestions": true,
+                  "editor.suggestFontSize": 21,
+                  "editor.suggestLineHeight": 3
 }
